@@ -1,0 +1,249 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Markdown version of {{file}}</title>
+    <style>
+      body {
+        font: 13.34px helvetica, arial, freesans, clean, sans-serif;
+        color: #333;
+      }
+      body * {
+        line-height: 1.4em;
+      }
+
+      #markdown {
+        width: 910px;
+      }
+
+      #markdown h1, #markdown h2, #markdown h3, #markdown h4, #markdown h5, #markdown h6 {
+        border: 0 !important;
+      }
+
+      #markdown h1 {
+        font-size: 170% !important;
+        border-top: 4px solid #aaa !important;
+        padding-top: .5em !important;
+        margin-top: 1.5em !important;
+      }
+
+        #markdown h1:first-child {
+          margin-top: 0 !important;
+          padding-top: .25em !important;
+          border-top: none !important;
+        }
+
+      #markdown h2 {
+        font-size: 150% !important;
+        margin-top: 1.5em !important;
+        border-top: 4px solid #e0e0e0 !important;
+        padding-top: .5em !important;
+      }
+
+      #markdown h3 {
+        margin-top: 1em !important;
+      }
+
+      #markdown p {
+        margin: 1em 0 !important;
+        line-height: 1.5em !important;
+      }
+
+      #markdown a.absent {
+        color: #a00;
+      }
+
+      #markdown ul,
+      #wiki-form .content-body ul {
+        margin: 1em 0 1em 2em !important;
+      }
+
+      #markdown ol,
+      #wiki-form .content-body ol {
+        margin: 1em 0 1em 2em !important;
+      }
+
+      #markdown ul li,
+      #wiki-form .content-body ul li,
+      #markdown ol li,
+      #wiki-form .content-body ol li {
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+      }
+
+      #markdown ul ul,
+      #markdown ul ol,
+      #markdown ol ol,
+      #markdown ol ul,
+      #wiki-form .content-body ul ul,
+      #wiki-form .content-body ul ol,
+      #wiki-form .content-body ol ol,
+      #wiki-form .content-body ol ul {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+
+      #markdown blockquote {
+        margin: 1em 0 !important;
+        border-left: 5px solid #ddd !important;
+        padding-left: .6em !important;
+        color: #555 !important;
+      }
+
+      #markdown dt {
+        font-weight: bold !important;
+        margin-left: 1em !important;
+      }
+
+      #markdown dd {
+        margin-left: 2em !important;
+        margin-bottom: 1em !important;
+      }
+
+      #markdown table {
+        margin: 1em 0 !important;
+      }
+
+        #markdown table th {
+          border-bottom: 1px solid #bbb !important;
+          padding: .2em 1em !important;
+        }
+
+        #markdown table td {
+          border-bottom: 1px solid #ddd !important;
+          padding: .2em 1em !important;
+        }
+
+      #markdown pre {
+        margin: 1em 0 !important;
+        font-size: 12px !important;
+        background-color: #f8f8ff !important;
+        border: 1px solid #dedede !important;
+        padding: .5em !important;
+        line-height: 1.5em !important;
+        color: #444 !important;
+        overflow: auto !important;
+      }
+
+        #markdown pre code {
+          padding: 0 !important;
+          font-size: 12px !important;
+          background-color: #f8f8ff !important;
+          border: none !important;
+        }
+
+      #markdown code {
+        font-size: 12px !important;
+        background-color: #f8f8ff !important;
+        color: #444 !important;
+        padding: 0 .2em !important;
+        border: 1px solid #dedede !important;
+      }
+
+      #markdown a code,
+      #markdown a:link code,
+      #markdown a:visited code
+      {
+        color: #4183c4 !important;
+      }
+
+      #markdown img {
+        max-width:100%;
+      }
+
+      /* console */
+
+      #markdown pre.console {
+        margin: 1em 0 !important;
+        font-size: 12px !important;
+        background-color: black !important;
+        padding: .5em !important;
+        line-height: 1.5em !important;
+        color: white !important;
+      }
+
+        #markdown pre.console code {
+          padding: 0 !important;
+          font-size: 12px !important;
+          background-color: black !important;
+          border: none !important;
+          color: white !important;
+        }
+
+        #markdown pre.console span {
+          color: #888 !important;
+        }
+
+        #markdown pre.console span.command {
+          color: yellow !important;
+        }
+
+      /* images */
+
+      #markdown .frame {
+        margin: 0;
+        display: inline-block;
+      }
+
+        #markdown .frame img {
+          display: block;
+        }
+
+        #markdown .frame > span {
+          display: block;
+          border: 1px solid #aaa;
+          padding: 4px;
+        }
+
+        #markdown .frame span span {
+          display: block;
+          font-size: 10pt;
+          margin: 0;
+          padding: 4px 0 2px 0;
+          text-align: center;
+          line-height: 10pt;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+      #markdown .float-left {
+        float: left;
+        padding: .5em 1em .25em 0;
+      }
+
+      #markdown .float-right {
+        float: right;
+        padding: .5em 0 .25em 1em;
+      }
+
+      #markdown .align-left {
+        display: block;
+        text-align: left;
+      }
+
+      #markdown .align-center {
+        display: block;
+        text-align: center;
+      }
+
+      #markdown .align-right {
+        display: block;
+        text-align: right;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script> 
+    <script> 
+      var socket = new io.Socket(); 
+      socket.connect();
+      //socket.on('connect', function () { alert("connected"); });
+
+      socket.on('message', function (data) {
+        document.getElementById("markdown").innerHTML = data;
+      });
+
+      socket.on('disconnect', function () { alert("Disconnected. Refresh or something"); });
+    </script>
+  </head>
+  <body>
+    <section id="markdown">
+    </section>
+  </body>
+</html>

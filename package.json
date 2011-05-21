@@ -1,0 +1,11 @@
+{
+  "name"         : "npm-md",
+  "version"      : "0.0.1",
+  "description"  : "realtime markdown file watcher",
+  "keywords"     : ["markdown"],
+  "homepage"     : "https://github.com/kastner/npm-md",
+  "author"       : "Erik Kastner <kastner@gmail.com>",
+  "repository"   : {"type" : "git", "url": "http://github.com/kastner/npm-md"},
+  "dependencies" : {"socket.io": ">= 0"},
+  "engines"      : {"node" : " >= 0.4.0"}
+}
